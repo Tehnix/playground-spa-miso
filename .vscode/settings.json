@@ -20,5 +20,6 @@
     "**/.DS_Store": true,
     "**/.ghc.environment*": true,
     "**/dist-newstyle": true
-  }
+  },
+  "nixEnvSelector.nixShellConfig": "${workspaceRoot}/default.nix"
 }

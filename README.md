@@ -5,12 +5,12 @@ Playing around with Miso SPAs and structuring them for larger scale applications
 
 The goal is to somewhat replicate the setup achieved in [the Elm SPA playground](https://github.com/Tehnix/playground-spa-elm):
 
-- [ ] Routing
+- [ ] Routing
 - [ ] GraphQL
 - [ ] Material UI (might need to make a wrapper for this)
 - [ ] I18n
 - [ ] Authentication
-- [ ] Doc Tests
+- [ ] Doc Tests
 
 ## Developing
 
