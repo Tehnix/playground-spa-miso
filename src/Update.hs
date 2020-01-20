@@ -2,7 +2,7 @@
 
 module Update where
 
-import Control.Lens ((%=), (+=), (-=), (.=), (^.))
+import Control.Lens ((+=), (-=), (.=))
 import qualified Miso
 import Types
 
@@ -29,8 +29,8 @@ updateModel msg =
       _ <- pure $ Miso.pushURI uri
       pure ()
     Initializing -> pure ()
-    FailedToInitialize err -> pure ()
-    Ready model -> pure ()
+    FailedToInitialize _err -> pure ()
+    Ready _model -> pure ()
     AddOne ->
       counter += 1
     SubtractOne ->

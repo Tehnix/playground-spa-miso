@@ -1,5 +1,7 @@
 {-# LANGUAGE DataKinds #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE TypeOperators #-}
 
 module Routes where
@@ -24,7 +26,7 @@ type ListRoute = "repos" :> Miso.View Msg
 type EditRoute = "repos" :> Capture "ident" RepoId :> Miso.View Msg
 
 listLink :: URI
-listLink = Servant.safeLink (Proxy @Route) (Proxy @ListRoute)
+listLink = Servant.linkURI $ Servant.safeLink (Proxy @Route) (Proxy @ListRoute)
 
 editLink :: RepoId -> URI
-editLink = Servant.safeLink (Proxy @Route) (Proxy @EditRoute)
+editLink repoId = Servant.linkURI $ Servant.safeLink (Proxy @Route) (Proxy @EditRoute) repoId

@@ -61,8 +61,10 @@ This works by [switching between GHC and GHCJS](https://github.com/dmjio/miso/bl
 ## Building for Release
 
 ```bash
-$ nix-build -A release
+$ nix-build -A release && nix-shell --run optimize
 ```
+
+Your optimized `all.js` and `index.html` will now be located in `dist/`.
 
 ## Setup
 

@@ -18,6 +18,7 @@ executable app
     , lens
     , miso
     , network-uri
+    , servant
   if !impl(ghcjs)
     build-depends:
          jsaddle

@@ -16,5 +16,15 @@ dev.env.overrideAttrs (old: {
     function dev () {
       ${pkgs.haskell.packages.ghc865.ghcid}/bin/ghcid -c '${pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-repl'
     }
+    function optimize () {
+      rm -r dist
+      mkdir -p dist
+      # cp ./result/bin/app.jsexe/index.html dist/index.html
+      ${pkgs.closurecompiler}/bin/closure-compiler \
+        --compilation_level ADVANCED_OPTIMIZATIONS \
+        --jscomp_off=checkVars \
+        --externs=./result/bin/app.jsexe/all.js.externs \
+        ./result/bin/app.jsexe/all.js > ./dist/all.js
+    }
   '';
 })

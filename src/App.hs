@@ -1,10 +1,7 @@
 module App (app) where
 
-import Control.Lens ((%=), (+=), (-=), (.=), (^.))
 import Miso (App (..))
 import qualified Miso
-import Miso.Html
-import Miso.String (ms)
 import Network.URI (URI)
 import Types
 import qualified Update
@@ -17,8 +14,8 @@ app = Miso.miso $ \uri ->
       model = initModel uri,
       update = Miso.fromTransition . Update.updateModel,
       view = View.viewModel,
-      events = Miso.defaultEvents,
       subs = [Miso.uriSub HandleURI],
+      events = Miso.defaultEvents,
       mountPoint = Nothing
     }
 
