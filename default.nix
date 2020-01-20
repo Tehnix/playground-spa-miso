@@ -7,4 +7,3 @@ with (import (builtins.fetchTarball {
   release = pkgs.haskell.packages.ghcjs86.callCabal2nix "app" ./. {};
   inherit pkgs;
 }
-

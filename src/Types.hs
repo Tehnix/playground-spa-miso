@@ -1,20 +1,31 @@
+{-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE TemplateHaskell #-}
+
 module Types where
 
 import Control.Lens
+import Miso (URI)
 
 -- | Type synonym for an application model
 data Model
   = Model
-  { _counter :: Int
-  } deriving (Show, Eq)
+      { _counter :: Int,
+        _currentURI :: URI
+      }
+  deriving (Show, Eq)
 
-counter :: Lens' Model Int
-counter = lens _counter $ \record field -> record { _counter = field }
+makeLensesWith classUnderscoreNoPrefixFields ''Model
+
+type RepoId = String
 
 -- | Sum type for application events
-data Action
-  = AddOne
-  | SubtractOne
+data Msg
+  = HandleURI URI
+  | ChangeURI URI
+  | Initializing
+  | FailedToInitialize String
+  | Ready Model
   | NoOp
-  | SayHelloWorld
+  | AddOne
+  | SubtractOne
   deriving (Show, Eq)

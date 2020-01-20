@@ -24,9 +24,25 @@ After you have Nix running, set up the tools,
 $ nix-env -iA cachix -f https://cachix.org/api/v1/install # Install cachix for quick builds
 $ cachix use hercules-ci # Add general cachix
 $ cachix use miso-haskell # Add Miso's cachix
-$ nix-env -iA cabal-install entr ag -f '<nixpkgs>' # Install a few of our build-tools
+$ nix-env -iA cabal-install entr ag hlint brittany -f '<nixpkgs>' # Install a few of our build-tools
 $ nix-env -iA ghcide-ghc865 -f https://github.com/hercules-ci/ghcide-nix/tarball/master # Set up GHCIDE for GHC 8.6.5
 ```
+
+Unfortunately installing our desired formatter is a few more steps (make sure to also add `~/.cabal/bin/` to your `$PATH`),
+
+```
+$ nix-shell # Drop into the nix shell
+$ cabal new-update # Make sure cabal has the package list
+$ cabal new-install ormolu
+```
+
+Use your editor,
+
+```bash
+$ nix-shell
+$ code . # For VS Code, replace with your desired editor
+```
+
 
 Run `ghcid` (typechecking, warnings, etc) in a terminal with,
 

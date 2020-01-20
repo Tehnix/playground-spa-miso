@@ -21,5 +21,8 @@
     "**/.ghc.environment*": true,
     "**/dist-newstyle": true
   },
-  "nixEnvSelector.nixShellConfig": "${workspaceRoot}/default.nix"
+  "nixEnvSelector.nixShellConfig": "${workspaceRoot}/shell.nix",
+  "[haskell]": {
+    "editor.defaultFormatter": "sjurmillidahl.ormolu-vscode"
+  }
 }
