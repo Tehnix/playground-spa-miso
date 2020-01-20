@@ -7,6 +7,16 @@ import Types
 import qualified Update
 import qualified View
 
+{-
+Fails when using `Miso.miso`, but works when using `Miso.startApp`:
+
+```
+A JavaScript exception was thrown! (may not reach Haskell code)
+TypeError: undefined is not an object (evaluating 'domChild.nodeType')
+JSException
+```
+
+-}
 app :: Miso.JSM ()
 app = Miso.miso $ \uri ->
   App
