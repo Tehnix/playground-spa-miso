@@ -91,4 +91,5 @@ We use Github actions to build the project, run tests, and run doc tests in the 
 ## Resources
 
 - [Getting Started Haskell Project with Nix](https://maybevoid.com/posts/2019-01-27-getting-started-haskell-nix.html)
+- [How to simply get your dependencies with Nix](https://dev.to/monacoremo/how-to-simply-get-your-dependencies-with-nix-2ce1)
 - Take inspiration from the [web-haskell boilerplate](https://github.com/dandoh/web-haskell), which sets up GraphQL, dotenv, jwt etc

@@ -1,3 +1,5 @@
+{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE TemplateHaskell #-}
 
@@ -7,12 +9,29 @@ import Control.Lens
 import Miso (URI)
 
 -- | Type synonym for an application model
+data App
+  = Initializing InitModel
+  | FailedToInitialize InitModel ErrorMessage
+  | Ready Model
+  deriving (Show, Eq)
+
+type ErrorMessage = String
+
+data InitModel
+  = InitModel
+      { _config :: String,
+        _currentURI :: URI
+      }
+  deriving (Show, Eq)
+
 data Model
-  = Model
+  = App
       { _counter :: Int,
         _currentURI :: URI
       }
   deriving (Show, Eq)
+
+makeLensesWith classUnderscoreNoPrefixFields ''InitModel
 
 makeLensesWith classUnderscoreNoPrefixFields ''Model
 
@@ -22,9 +41,7 @@ type RepoId = String
 data Msg
   = HandleURI URI
   | ChangeURI URI
-  | Initializing
-  | FailedToInitialize String
-  | Ready Model
+  | Initialize
   | NoOp
   | AddOne
   | SubtractOne

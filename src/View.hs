@@ -13,9 +13,12 @@ import qualified Routes
 import Servant.API ((:<|>) (..))
 import Types
 
--- | Constructs a virtual DOM from a model
-viewModel :: Model -> Miso.View Msg
-viewModel model = div_ [] [routeToPage model]
+viewApp :: App -> Miso.View Msg
+viewApp appModel =
+  case appModel of
+    Initializing initModel -> div_ [] [text "Initializing..."]
+    FailedToInitialize initModel err -> div_ [] [text . ms $ "Failed to initialize: " <> err]
+    Ready model -> div_ [] [routeToPage model]
 
 routeToPage :: Model -> Miso.View Msg
 routeToPage model = either (const notFoundPage) id page

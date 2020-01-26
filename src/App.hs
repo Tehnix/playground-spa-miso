@@ -7,31 +7,19 @@ import Types
 import qualified Update
 import qualified View
 
-{-
-Fails when using `Miso.miso`, but works when using `Miso.startApp`:
-
-```
-A JavaScript exception was thrown! (may not reach Haskell code)
-TypeError: undefined is not an object (evaluating 'domChild.nodeType')
-JSException
-```
-
--}
 app :: Miso.JSM ()
-app = Miso.miso $ \uri ->
-  App
-    { initialAction = Initializing,
-      model = initModel uri,
-      update = Miso.fromTransition . Update.updateModel,
-      view = View.viewModel,
-      subs = [Miso.uriSub HandleURI],
-      events = Miso.defaultEvents,
-      mountPoint = Nothing
-    }
+app = do
+  uri <- Miso.getCurrentURI
+  Miso.startApp
+    Miso.App
+      { initialAction = Initialize,
+        model = initModel uri,
+        update = Update.updateApp,
+        view = View.viewApp,
+        subs = [Miso.uriSub HandleURI],
+        events = Miso.defaultEvents,
+        mountPoint = Nothing
+      }
 
-initModel :: URI -> Model
-initModel uri =
-  Model
-    { _counter = 0,
-      _currentURI = uri
-    }
+initModel :: URI -> Types.App
+initModel uri = Initializing $ InitModel "" uri

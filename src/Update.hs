@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Update where
@@ -21,6 +22,15 @@ import Types
 --    `(-=)` directly subtracts a value (much like `-=` in other languages)
 --    `(%=)` is also called `modifying`, and lets you modify something (i.e. you can
 --     write `(+=)` as `counter %= (+ 1)`)
+updateApp :: Msg -> App -> Miso.Effect Msg App
+updateApp msg appModel =
+  case appModel of
+    Initializing initModel -> pure $ Initializing initModel
+    FailedToInitialize initModel err -> pure $ FailedToInitialize initModel err
+    Ready model -> do
+      newModel <- Miso.fromTransition (updateModel msg) model
+      pure $ Ready newModel
+
 updateModel :: Msg -> Miso.Transition Msg Model ()
 updateModel msg =
   case msg of
@@ -28,9 +38,6 @@ updateModel msg =
     ChangeURI uri -> do
       _ <- pure $ Miso.pushURI uri
       pure ()
-    Initializing -> pure ()
-    FailedToInitialize _err -> pure ()
-    Ready _model -> pure ()
     AddOne ->
       counter += 1
     SubtractOne ->
