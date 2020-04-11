@@ -26,5 +26,9 @@ dev.env.overrideAttrs (old: {
     function run-ghcid () {
       ${miso-pkgs.pkgs.haskell.packages.ghc865.ghcid}/bin/ghcid -c '${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-repl --ghc'
     }
+
+    function build () {
+      ${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-build
+    }
   '';
 })

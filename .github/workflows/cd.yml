@@ -4,7 +4,7 @@ name: cd
 on: [push]
 
 jobs:
-  cd:
+  ghcjs-build:
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v1
@@ -14,11 +14,24 @@ jobs:
           skipNixBuild: true
           name: hercules-ci miso-haskell # Add general and Miso's cachix
 
-      - name: Build GHCJS
+      - name: Build GHCJS version
         run: nix-shell shell-ghcjs.nix --run build
 
       - name: Optimize build
         run: nix-shell shell-ghcjs.nix --run optimize
+
+  ghc-build:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cachix/install-nix-action@v8
+      - uses: cachix/cachix-action@v5
+        with:
+          skipNixBuild: true
+          name: hercules-ci miso-haskell # Add general and Miso's cachix
+
+      - name: Build GHC version
+        run: nix-shell --run build
 # Enable cache for cabal
 # - uses: actions/cache@v1
 #   name: Cache .stack-work
