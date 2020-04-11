@@ -1,9 +1,9 @@
 let
-  miso-pkgs = import (builtins.fetchTarball {
-    url = "https://github.com/dmjio/miso/archive/561ffad.tar.gz";
-    sha256 = "1wwzckz2qxb873wdkwqmx9gmh0wshcdxi7gjwkba0q51jnkfdi41";
-  }) {};
-  # miso-pkgs = import (builtins.fetchTarball "https://github.com/dmjio/miso/archive/6ed0800c789b4feedda81c5fb3ece7895ab54f25.tar.gz") {};
+  # miso-pkgs = import (builtins.fetchTarball {
+  #   url = "https://github.com/dmjio/miso/archive/561ffad.tar.gz";
+  #   sha256 = "1wwzckz2qxb873wdkwqmx9gmh0wshcdxi7gjwkba0q51jnkfdi41";
+  # }) {};
+  miso-pkgs = import (builtins.fetchTarball "https://github.com/dmjio/miso/archive/6ed0800c789b4feedda81c5fb3ece7895ab54f25.tar.gz") {};
   ghcide-pkgs = import (builtins.fetchTarball "https://github.com/hercules-ci/ghcide-nix/tarball/master") {};
 in
   {
