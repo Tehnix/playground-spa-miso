@@ -7,6 +7,7 @@ import Types
 import qualified Update
 import qualified View
 
+
 app :: Miso.JSM ()
 app = do
   uri <- Miso.getCurrentURI

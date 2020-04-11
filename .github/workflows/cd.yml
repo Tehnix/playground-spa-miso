@@ -4,6 +4,7 @@ name: cd
 on: [push]
 
 jobs:
+  # Run our release build with optimizations.
   ghcjs-build:
     runs-on: ubuntu-16.04
     steps:
@@ -18,35 +19,32 @@ jobs:
           skipNixBuild: true
           name: miso-haskell # Add Miso's cachix
 
-      - name: Build GHCJS version
+      - name: Build GHCJS Version
         run: nix-shell shell-ghcjs.nix --run build
 
-      - name: Optimize build
+      - name: Optimize Build
         run: nix-shell shell-ghcjs.nix --run optimize
-  # ghc-build:
-  #   runs-on: ubuntu-16.04
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - uses: cachix/install-nix-action@v8
-  #     - uses: cachix/cachix-action@v5
-  #       with:
-  #         skipNixBuild: true
-  #         name: hercules-ci miso-haskell # Add general and Miso's cachix
-  #     - name: Build GHC version
-  #       run: nix-shell --run build
-# Enable cache for cabal
-# - uses: actions/cache@v1
-#   name: Cache .stack-work
-#   with:
-#     path: .stack-work
-#     key: ${{ runner.os }}-${{env.GHC_VERSION}}-stack-work
-# - uses: actions/cache@v1
-#   name: Cache ~/.cabal/store
-#   with:
-#     path: ~/.cabal/store
-#     key: ${{ runner.os }}-${{env.GHC_VERSION}}-cabal-store
-# - uses: actions/cache@v1
-#   name: Cache stack
-#   with:
-#     path: ~/.stack
-#     key: ${{ runner.os }}-${{env.GHC_VERSION}}-stack
+
+  # Run our development build along with doc and unit tests.
+  ghc-build:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: cachix/install-nix-action@v8
+      - uses: cachix/cachix-action@v5
+        with:
+          skipNixBuild: true
+          name: hercules-ci # Add general cachix
+      - uses: cachix/cachix-action@v5
+        with:
+          skipNixBuild: true
+          name: miso-haskell # Add Miso's cachix
+
+      - name: Build GHC Version
+        run: nix-shell --run build
+
+      - name: Test Documentation
+        run: cabal new-test test:doctests
+
+      - name: Test Application
+        run: cabal new-test test:app-test

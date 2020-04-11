@@ -56,7 +56,7 @@ default-extensions:
 dependencies:
   - base
   - lens
-  - miso
+  - miso >= 1.5.0.0
   - network-uri
   - servant
 
@@ -96,3 +96,11 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - miso-spa
+
+  doctests:
+    main: Doctests.hs
+    ghc-options:
+      - -threaded
+    dependencies:
+      - miso-spa
+      - doctest >= 0.16.3

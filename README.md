@@ -9,7 +9,8 @@ The goal is to somewhat replicate the setup achieved in [the Elm SPA playground]
 - [ ] GraphQL
 - [ ] Material UI (might need to make a wrapper for this)
 - [ ] I18n
-- [ ] Doc Tests
+- [x] Doc Tests
+- [x] CI
 
 ## Developing
 
@@ -85,11 +86,36 @@ Material-UI could potentially be ported easily by using [material-components-web
 ### 🚧 i18n 🚧
 - i18n support can quickly be built, taking inspiration from [i18next-elm](https://github.com/ChristophP/elm-i18next/tree/4.0.0), which more or less just implements a [single file](https://github.com/ChristophP/elm-i18next/blob/4.0.0/src/I18Next.elm)
 
-### 🚧 Verified Examples in Documentation 🚧
+### Verified Examples in Documentation
 
-Look at [doctest](https://hackage.haskell.org/package/doctest)
+We use [doctest](https://hackage.haskell.org/package/doctest) to verify all examples in code comments. They can be run with `cabal new-test test:doctests` inside a nix-shell session, and are automatically run in the CI.
 
-### 🚧 CI 🚧
+Comments are only evalauted in haddock comments. A quick overview:
+
+```
+-- $setup
+-- >>> let x = 23 :: Int
+
+-- | Compute Fibonacci numbers
+--
+-- Examples:
+--
+-- >>> x + 10 + ten
+-- 43
+--
+-- >>> :{
+--  let
+--    y = 1
+--    z = 2
+--  in x + y + z + ten
+-- :}
+-- 36
+ten = 10
+```
+
+The above illustrates using `$setup` to setup code that should not be included in documentation, along with multi-line blocks (similar to ghci).
+
+### CI
 
 We use Github actions to build the project, run tests, and run doc tests in the CI pipeline. Check out the workflows in `.github/workflows/` to see the specific workflows that are set up.
 

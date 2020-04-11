@@ -10,6 +10,7 @@ dev.env.overrideAttrs (old: {
     alias hlint=${miso-pkgs.pkgs.haskell.packages.ghc865.hlint}/bin/hlint
     alias ghcide=${ghcide-pkgs.ghcide-ghc865}/bin/ghcide
     alias hpack=${miso-pkgs.pkgs.haskell.packages.ghc865.hpack}/bin/hpack
+    alias doctest=${miso-pkgs.pkgs.haskell.packages.ghc865.doctest}/bin/doctest
 
     # Make sure our generated .cabal file and configuration is always up-to-date.
     hpack
