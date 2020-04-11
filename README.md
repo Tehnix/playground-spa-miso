@@ -9,7 +9,6 @@ The goal is to somewhat replicate the setup achieved in [the Elm SPA playground]
 - [ ] GraphQL
 - [ ] Material UI (might need to make a wrapper for this)
 - [ ] I18n
-- [ ] Authentication
 - [ ] Doc Tests
 
 ## Developing
@@ -18,51 +17,59 @@ We'll use Nix to manage our tools and build our project. Nix is the best option 
 
 If you haven't set up Nix then [follow these steps if you are on macOS](https://gist.github.com/Tehnix/38efa7ff1215ae49bf17925ce1684266#setting-up-nix), or simply run `sh <(curl https://nixos.org/nix/install) --daemon` on Linux.
 
-After you have Nix running, set up our caches for much faster builds,
+After you have Nix running, set up our caches for much faster builds, and some node dependencies for development,
 
 ```bash
 $ nix-env -iA cachix -f https://cachix.org/api/v1/install # Install cachix for quick builds
 $ cachix use hercules-ci # Add general cachix
 $ cachix use miso-haskell # Add Miso's cachix
+$ npm i
 ```
-<!--
-Unfortunately installing our desired formatter is a few more steps (make sure to also add `~/.cabal/bin/` to your `$PATH`),
 
-```
-$ nix-shell # Drop into the nix shell
-$ cabal new-update # Make sure cabal has the package list
-$ cabal new-install ormolu
-``` -->
+**IDE**
 
-Use your editor,
+For VS Code, we recommend using the [nix-env-selector](https://github.com/arrterian/nix-env-selector) extension. For other editors, open your editor from within a `nix-shell` session,
 
 ```bash
 $ nix-shell
 $ code . # For VS Code, replace with your desired editor
 ```
 
+In the nix-shell, you will have access to ghcide, ghcid and hlint.
 
 Run `ghcid` (typechecking, warnings, etc) in a terminal with,
 
 ```bash
-$ nix-shell --run dev
+$ npm run ghcid # or nix-shell --run run-ghcid
 ```
+
+**Local Development**
 
 Run our site on `http://localhost:8080` with hot-reloading (broken until [jsaddle#107](https://github.com/ghcjs/jsaddle/issues/107) is fixed),
 
 ```bash
-$ nix-shell --run reload
+$ npm run dev:reload # nix-shell --run reload
 ```
 
 This works by [switching between GHC and GHCJS](https://github.com/dmjio/miso/blob/master/sample-app-jsaddle/Main.hs#L32-L40) depending on the target.
 
+Alternatively you can compile the site on file changes, and access it on [http://127.0.0.1:8081](http://127.0.0.1:8081),
+
+```bash
+$ npm run dev
+[serve] Starting up http-serve for dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/app-0.1.0.0/x/app/build/app/app.jsexe
+[serve] Available on:
+[serve]   http://127.0.0.1:8081
+[ghcjs] Building library for....
+```
+
 ## Building for Release
 
 ```bash
-$ nix-build -A release && nix-shell --run optimize
+$ npm run build # or nix-build -A release && nix-shell --run optimize
 ```
 
-Your optimized `all.js` and `index.html` will now be located in `dist/`.
+Your optimized `all.js` and `index.html` will now be located in `dist/`. You can test it out with `npm run serve:release`.
 
 ## Setup
 

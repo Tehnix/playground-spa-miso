@@ -4,9 +4,17 @@
   "description": "Playing around with Miso SPAs and structuring them for larger scale applications. The purpose is to avoid servers, so we are explicitly not aiming at an isomorphic setup, but purely SPA.",
   "main": "index.js",
   "scripts": {
-    "serve": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/app-0.1.0.0/x/app/build/app/app.jsexe -c-1",
-    "ghcjs": "nix-shell shell-ghcjs.nix --run refresh",
-    "dev": "npm-run-all --silent --print-label --parallel serve ghcjs"
+    "serve:release": "http-serve dist -c-1",
+    "serve:dev": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/app-0.1.0.0/x/app/build/app/app.jsexe -c-1",
+    "dev:ghcjs": "nix-shell shell-ghcjs.nix --run refresh",
+    "dev:refresh-ghcjs": "npm-run-all --silent --print-label --parallel serve:dev dev:ghcjs",
+    "dev:reload": "nix-shell --run reload",
+    "dev": "npm --silent run dev:refresh-ghcjs",
+    "ghcid": "nix-shell --run run-ghcid",
+    "build:clean": "nix-shell shell-ghcjs.nix --run clean",
+    "build:release": "nix-shell shell-ghcjs.nix --run build",
+    "build:optimize": "nix-shell shell-ghcjs.nix --run optimize",
+    "build": "npm-run-all --silent --print-label --continue-on-error --serial build:clean build:release build:optimize"
   },
   "repository": {
     "type": "git",

@@ -1,1 +1,2 @@
 compiler: ghcjs
+packages: ./miso-spa.cabal
