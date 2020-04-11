@@ -1,0 +1,10 @@
+cradle:
+  { cabal: { component: "exe:app-exe" } }
+  # ghcide does not support multi cradle yet, see https://github.com/digital-asset/ghcide/issues/113.
+  # multi:
+  #   - path: "./src"
+  #     config: { cradle: { cabal: { component: "lib:miso-spa" } } }
+  #   - path: "./app"
+  #     config: { cradle: { cabal: { component: "exe:app-exe" } } }
+  #   - path: "./test"
+  #     config: { cradle: { cabal: { component: "test:app-test" } } }

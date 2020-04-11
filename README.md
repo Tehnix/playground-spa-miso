@@ -18,23 +18,21 @@ We'll use Nix to manage our tools and build our project. Nix is the best option 
 
 If you haven't set up Nix then [follow these steps if you are on macOS](https://gist.github.com/Tehnix/38efa7ff1215ae49bf17925ce1684266#setting-up-nix), or simply run `sh <(curl https://nixos.org/nix/install) --daemon` on Linux.
 
-After you have Nix running, set up the tools,
+After you have Nix running, set up our caches for much faster builds,
 
 ```bash
 $ nix-env -iA cachix -f https://cachix.org/api/v1/install # Install cachix for quick builds
 $ cachix use hercules-ci # Add general cachix
 $ cachix use miso-haskell # Add Miso's cachix
-$ nix-env -iA cabal-install entr ag hlint brittany -f '<nixpkgs>' # Install a few of our build-tools
-$ nix-env -iA ghcide-ghc865 -f https://github.com/hercules-ci/ghcide-nix/tarball/master # Set up GHCIDE for GHC 8.6.5
 ```
-
+<!--
 Unfortunately installing our desired formatter is a few more steps (make sure to also add `~/.cabal/bin/` to your `$PATH`),
 
 ```
 $ nix-shell # Drop into the nix shell
 $ cabal new-update # Make sure cabal has the package list
 $ cabal new-install ormolu
-```
+``` -->
 
 Use your editor,
 

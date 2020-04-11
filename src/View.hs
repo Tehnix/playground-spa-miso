@@ -4,13 +4,13 @@
 module View where
 
 import Control.Lens ((^.))
-import Data.Proxy (Proxy (..))
+import Data.Proxy (Proxy(..))
 import qualified Miso
 import Miso.Html
 import Miso.String (ms)
 import Routes (Route)
 import qualified Routes
-import Servant.API ((:<|>) (..))
+import Servant.API ((:<|>)(..))
 import Types
 
 viewApp :: App -> Miso.View Msg

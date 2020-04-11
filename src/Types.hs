@@ -6,7 +6,7 @@
 module Types where
 
 import Control.Lens
-import Miso (URI)
+import Network.URI (URI)
 
 -- | Type synonym for an application model
 data App
@@ -19,14 +19,14 @@ type ErrorMessage = String
 
 data InitModel
   = InitModel
-      { _config :: String,
+      { _config     :: String,
         _currentURI :: URI
       }
   deriving (Show, Eq)
 
 data Model
   = App
-      { _counter :: Int,
+      { _counter    :: Int,
         _currentURI :: URI
       }
   deriving (Show, Eq)

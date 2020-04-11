@@ -2,9 +2,9 @@
 module Main where
 
 #ifndef __GHCJS__
+import Language.Javascript.JSaddle.Warp as JSaddle
 import Miso (JSM)
 import qualified Miso
-import Language.Javascript.JSaddle.Warp as JSaddle
 import qualified Network.Wai.Handler.Warp as Warp
 import qualified Network.WebSockets as WebSockets
 #endif

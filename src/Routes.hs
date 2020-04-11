@@ -6,12 +6,12 @@
 
 module Routes where
 
-import Data.Proxy (Proxy (..))
+import Data.Proxy (Proxy(..))
 import qualified Miso
-import qualified Servant.API as Servant
 import Servant.API ((:<|>), (:>), Capture)
-import qualified Servant.Links as Servant
+import qualified Servant.API as Servant
 import Servant.Links (URI)
+import qualified Servant.Links as Servant
 import Types
 
 type Route =

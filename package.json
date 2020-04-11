@@ -1,0 +1,25 @@
+{
+  "name": "playground-spa-miso",
+  "version": "1.0.0",
+  "description": "Playing around with Miso SPAs and structuring them for larger scale applications. The purpose is to avoid servers, so we are explicitly not aiming at an isomorphic setup, but purely SPA.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/app-0.1.0.0/x/app/build/app/app.jsexe -c-1",
+    "ghcjs": "nix-shell shell-ghcjs.nix --run refresh",
+    "dev": "npm-run-all --silent --print-label --parallel serve ghcjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tehnix/playground-spa-miso.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tehnix/playground-spa-miso/issues"
+  },
+  "homepage": "https://github.com/Tehnix/playground-spa-miso#readme",
+  "devDependencies": {
+    "http-serve": "1.0.1",
+    "npm-run-all": "4.1.5"
+  }
+}

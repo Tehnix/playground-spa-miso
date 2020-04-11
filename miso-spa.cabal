@@ -1,0 +1,93 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9958dd24fd9e8bcfc9ec5535eba56e0288a68d282ecdaea980934924da464afb
+
+name:           miso-spa
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/app#readme>
+homepage:       https://github.com/tehnix/playground-spa-miso#readme
+bug-reports:    https://github.com/tehnix/playground-spa-miso/issues
+author:         Tehnix
+maintainer:     ckl@codetalk.io
+copyright:      2020 Tehnix
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    Changelog.md
+
+source-repository head
+  type: git
+  location: https://github.com/tehnix/playground-spa-miso
+
+library
+  exposed-modules:
+      App
+      Routes
+      Types
+      Update
+      View
+  other-modules:
+      Paths_miso_spa
+  hs-source-dirs:
+      src
+  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  ghc-options: -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns
+  build-depends:
+      base
+    , lens
+    , miso
+    , network-uri
+    , servant
+  default-language: Haskell2010
+
+executable app-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_miso_spa
+  hs-source-dirs:
+      app
+  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  ghc-options: -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , lens
+    , miso
+    , network-uri
+    , servant
+  if impl(ghcjs)
+    build-depends:
+        miso-spa
+  else
+    build-depends:
+        jsaddle
+      , jsaddle-warp
+      , miso-spa
+      , servant
+      , transformers
+      , warp
+      , websockets
+  default-language: Haskell2010
+
+test-suite app-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_miso_spa
+  hs-source-dirs:
+      test
+  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  ghc-options: -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , lens
+    , miso
+    , miso-spa
+    , network-uri
+    , servant
+  default-language: Haskell2010

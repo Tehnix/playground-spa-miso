@@ -1,6 +1,6 @@
 module App (app) where
 
-import Miso (App (..))
+import Miso (App(..))
 import qualified Miso
 import Network.URI (URI)
 import Types
