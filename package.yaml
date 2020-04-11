@@ -11,13 +11,21 @@ extra-source-files:
   - Changelog.md
 
 ghc-options:
+  - -threaded
+  - -rtsopts
+  - -with-rtsopts=-N
   - -Wall
   - -Wcompat
   - -Wredundant-constraints
   - -Wincomplete-record-updates
   - -Wincomplete-uni-patterns
+  - -Wincomplete-patterns
+  - -Wpartial-fields
+  - -fhide-source-paths
+  - -Wno-type-defaults
 
 default-extensions:
+  # Other useful extensions.
   - ApplicativeDo
   - BangPatterns
   - ConstraintKinds
@@ -54,7 +62,8 @@ default-extensions:
   - TypeOperators
 
 dependencies:
-  - base
+  - base-noprelude
+  - relude
   - lens
   - miso >= 1.5.0.0
   - network-uri
@@ -67,10 +76,6 @@ executables:
   app-exe:
     main: Main.hs
     source-dirs: app
-    ghc-options:
-      - -threaded
-      - -rtsopts
-      - -with-rtsopts=-N
     when:
       - condition: impl(ghcjs)
         then:
@@ -90,10 +95,6 @@ tests:
   app-test:
     main: Spec.hs
     source-dirs: test
-    ghc-options:
-      - -threaded
-      - -rtsopts
-      - -with-rtsopts=-N
     dependencies:
       - miso-spa
 

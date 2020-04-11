@@ -11,25 +11,24 @@ dev.env.overrideAttrs (old: {
     alias ghcide=${ghcide-pkgs.ghcide-ghc865}/bin/ghcide
     alias hpack=${miso-pkgs.pkgs.haskell.packages.ghc865.hpack}/bin/hpack
     alias doctest=${miso-pkgs.pkgs.haskell.packages.ghc865.doctest}/bin/doctest
+    alias cabal=${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal
+    alias ghcid=${miso-pkgs.pkgs.haskell.packages.ghc865.ghcid}/bin/ghcid
 
     # Make sure our generated .cabal file and configuration is always up-to-date.
     hpack
 
     function reload () {
       echo "🚧 Currently broken until JSAddle is fixed 🚧"
-      ${miso-pkgs.pkgs.haskell.packages.ghc865.ghcid}/bin/ghcid -c '${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-repl --ghc app:exe:app' -T ':main' --restart 'app.cabal' --reload src
+      echo "🔗 (see https://github.com/ghcjs/jsaddle/issues/107) 🔗"
+      ghcid -c 'cabal new-repl --ghc exe:app-exe' -T ':main' --restart 'miso-spa.cabal' --reload src
     }
 
     function refresh () {
-      ${miso-pkgs.pkgs.haskell.packages.ghc865.ghcid}/bin/ghcid -c '${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-repl --ghc app:exe:app' -T ':main' --restart 'app.cabal' --restart src
+      ghcid -c 'cabal new-repl --ghc exe:app-exe' -T ':main' --restart 'miso-spa.cabal' --restart src
     }
 
     function run-ghcid () {
-      ${miso-pkgs.pkgs.haskell.packages.ghc865.ghcid}/bin/ghcid -c '${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-repl --ghc'
-    }
-
-    function build () {
-      ${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal new-build
+      ghcid -c 'cabal new-repl --ghc'
     }
   '';
 })

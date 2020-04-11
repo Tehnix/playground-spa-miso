@@ -41,10 +41,10 @@ jobs:
           name: miso-haskell # Add Miso's cachix
 
       - name: Build GHC Version
-        run: nix-shell --run build
+        run: nix-shell --run 'cabal new-build'
 
       - name: Test Documentation
-        run: cabal new-test test:doctests
+        run: nix-shell --run 'cabal new-test test:doctests'
 
       - name: Test Application
-        run: cabal new-test test:app-test
+        run: nix-shell --run 'cabal new-test test:app-test'

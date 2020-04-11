@@ -15,11 +15,11 @@ data App
   | Ready Model
   deriving (Show, Eq)
 
-type ErrorMessage = String
+type ErrorMessage = MisoString
 
 data InitModel
   = InitModel
-      { _config     :: String,
+      { _config     :: MisoString,
         _currentURI :: URI
       }
   deriving (Show, Eq)
@@ -31,8 +31,8 @@ data Model
       }
   deriving (Show, Eq)
 
-makeLensesWith classUnderscoreNoPrefixFields ''InitModel
 
+makeLensesWith classUnderscoreNoPrefixFields ''InitModel
 makeLensesWith classUnderscoreNoPrefixFields ''Model
 
 type RepoId = String

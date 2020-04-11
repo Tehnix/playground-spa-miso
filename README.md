@@ -11,6 +11,7 @@ The goal is to somewhat replicate the setup achieved in [the Elm SPA playground]
 - [ ] I18n
 - [x] Doc Tests
 - [x] CI
+- [x] Relude (alternative Prelude)
 
 ## Developing
 
@@ -119,6 +120,10 @@ The above illustrates using `$setup` to setup code that should not be included i
 ### CI
 
 We use Github actions to build the project, run tests, and run doc tests in the CI pipeline. Check out the workflows in `.github/workflows/` to see the specific workflows that are set up.
+
+### Relude as alternative Prelude
+
+We are using [Relude](https://github.com/kowainik/relude) instead of the default Prelude, for safer defaults. You can read a bit about how an alternative Prelude works in the [typeclasses introduction to `NoImplicitPrelude`](https://typeclasses.com/ghc/no-implicit-prelude).
 
 ## Resources
 
