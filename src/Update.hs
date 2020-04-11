@@ -1,3 +1,5 @@
+{-# LANGUAGE AllowAmbiguousTypes #-}
+
 module Update where
 
 import Control.Lens ((+=), (-=), (.=))

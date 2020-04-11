@@ -1,5 +1,16 @@
 :set -fwarn-unused-binds -fwarn-unused-imports
 :set -isrc
-:set -XNoImplicitPrelude
-:import Relude
+
+:set -XAllowAmbiguousTypes
+:set -XDataKinds
+:set -XDeriveGeneric
+:set -XDerivingVia
+:set -XDuplicateRecordFields
+:set -XFlexibleContexts
+:set -XFlexibleInstances
+:set -XMultiParamTypeClasses
+:set -XNoMonomorphismRestriction
+:set -XTypeApplications
+:set -XTypeSynonymInstances
+
 :load Main

@@ -1,3 +1,4 @@
+{-# LANGUAGE OverlappingInstances #-}
 module Types where
 
 import Data.Generics.Labels ()
