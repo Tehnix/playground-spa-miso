@@ -25,17 +25,22 @@ ghc-options:
   - -Wno-type-defaults
 
 default-extensions:
+  # Working with records.
+  - DuplicateRecordFields
+  - OverloadedLabels
+  # Working with Generics.
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - NoMonomorphismRestriction
   # Other useful extensions.
   - ApplicativeDo
   - BangPatterns
   - ConstraintKinds
   - DataKinds
   - DefaultSignatures
-  - DeriveFoldable
-  - DeriveFunctor
-  - DeriveGeneric
-  - DeriveLift
-  - DeriveTraversable
   - EmptyCase
   - EmptyDataDecls
   - ExistentialQuantification
@@ -64,8 +69,11 @@ default-extensions:
 dependencies:
   - base-noprelude
   - relude
-  - lens
   - miso >= 1.5.0.0
+  - lens
+  - generic-lens
+  - bytestring
+  - aeson
   - network-uri
   - servant
 

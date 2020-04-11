@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5f60ed76f829ca947678515241c3f0b168aa1269c8942c08f0d1a416721fcea5
+-- hash: 73dd81685034c4eae78e9d055a8ab4790209dde5d42c10c154f7abffb95af337
 
 name:           miso-spa
 version:        0.1.0.0
@@ -37,10 +37,13 @@ library
       Paths_miso_spa
   hs-source-dirs:
       src
-  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields OverloadedLabels DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults
   build-depends:
-      base-noprelude
+      aeson
+    , base-noprelude
+    , bytestring
+    , generic-lens
     , lens
     , miso >=1.5.0.0
     , network-uri
@@ -54,10 +57,13 @@ executable app-exe
       Paths_miso_spa
   hs-source-dirs:
       app
-  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields OverloadedLabels DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults
   build-depends:
-      base-noprelude
+      aeson
+    , base-noprelude
+    , bytestring
+    , generic-lens
     , lens
     , miso >=1.5.0.0
     , network-uri
@@ -84,10 +90,13 @@ test-suite app-test
       Paths_miso_spa
   hs-source-dirs:
       test
-  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields OverloadedLabels DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults
   build-depends:
-      base-noprelude
+      aeson
+    , base-noprelude
+    , bytestring
+    , generic-lens
     , lens
     , miso >=1.5.0.0
     , miso-spa
@@ -101,11 +110,14 @@ test-suite doctests
   main-is: Doctests.hs
   other-modules:
       Paths_miso_spa
-  default-extensions: ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields OverloadedLabels DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults -threaded
   build-depends:
-      base-noprelude
+      aeson
+    , base-noprelude
+    , bytestring
     , doctest >=0.16.3
+    , generic-lens
     , lens
     , miso >=1.5.0.0
     , miso-spa

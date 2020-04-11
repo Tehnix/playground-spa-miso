@@ -1,11 +1,6 @@
-{-# LANGUAGE DuplicateRecordFields #-}
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE FunctionalDependencies #-}
-{-# LANGUAGE TemplateHaskell #-}
-
 module Types where
 
-import Control.Lens
+import Data.Generics.Labels ()
 import Network.URI (URI)
 
 -- | Type synonym for an application model
@@ -19,21 +14,17 @@ type ErrorMessage = MisoString
 
 data InitModel
   = InitModel
-      { _config     :: MisoString,
-        _currentURI :: URI
+      { config     :: MisoString,
+        currentURI :: URI
       }
-  deriving (Show, Eq)
+  deriving (Show, Eq, Generic)
 
 data Model
   = App
-      { _counter    :: Int,
-        _currentURI :: URI
+      { counter    :: Int,
+        currentURI :: URI
       }
-  deriving (Show, Eq)
-
-
-makeLensesWith classUnderscoreNoPrefixFields ''InitModel
-makeLensesWith classUnderscoreNoPrefixFields ''Model
+  deriving (Show, Eq, Generic)
 
 type RepoId = String
 

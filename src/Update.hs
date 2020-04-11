@@ -1,6 +1,3 @@
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE OverloadedStrings #-}
-
 module Update where
 
 import Control.Lens ((+=), (-=), (.=))
@@ -34,14 +31,14 @@ updateApp msg appModel =
 updateModel :: Msg -> Miso.Transition Msg Model ()
 updateModel msg =
   case msg of
-    HandleURI uri -> currentURI .= uri
+    HandleURI uri -> #currentURI .= uri
     ChangeURI uri -> do
       _ <- pure $ Miso.pushURI uri
       pure ()
     AddOne ->
-      counter += 1
+      #counter += 1
     SubtractOne ->
-      counter -= 1
+      #counter -= 1
     NoOp -> do
       Miso.scheduleIO_ (Miso.consoleLog "Noop")
       pure ()
