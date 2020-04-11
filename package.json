@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve:release": "http-serve dist -c-1",
-    "serve:dev": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/app-0.1.0.0/x/app/build/app/app.jsexe -c-1",
+    "serve:dev": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe -c-1",
     "dev:ghcjs": "nix-shell shell-ghcjs.nix --run refresh",
     "dev:refresh-ghcjs": "npm-run-all --silent --print-label --parallel serve:dev dev:ghcjs",
     "dev:reload": "nix-shell --run reload",

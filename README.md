@@ -80,11 +80,12 @@ We'll use [morpheus](https://github.com/morpheusgraphql/morpheus-graphql).
 
 ### 🚧 Material UI 🚧
 
-Material-UI could potentially be ported easily by using [material-components-web-elm](https://github.com/aforemny/material-components-web-elm/tree/2.0.1) as the base, and then migrating the [Elm files](https://github.com/aforemny/material-components-web-elm/tree/2.0.1/src/Material) to Miso/Haskell syntax
+Material-UI could potentially be ported easily by using [material-components-web-elm](https://github.com/aforemny/material-components-web-elm) as the base, and then migrating the [Elm files](https://github.com/aforemny/material-components-web-elm/src/Material) to Miso/Haskell syntax
 
 
 ### 🚧 i18n 🚧
-- i18n support can quickly be built, taking inspiration from [i18next-elm](https://github.com/ChristophP/elm-i18next/tree/4.0.0), which more or less just implements a [single file](https://github.com/ChristophP/elm-i18next/blob/4.0.0/src/I18Next.elm)
+
+i18n support can quickly be built, taking inspiration from [i18next-elm](https://github.com/ChristophP/elm-i18next/tree/4.0.0), which more or less just implements a [single file](https://github.com/ChristophP/elm-i18next/blob/4.0.0/src/I18Next.elm)
 
 ### Verified Examples in Documentation
 

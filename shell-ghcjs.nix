@@ -7,7 +7,7 @@ release.env.overrideAttrs (old: {
     hpack
 
     function refresh () {
-      echo ">> Compiling index.html to file://$(pwd)/dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/app-0.1.0.0/x/app/build/app/app.jsexe/index.html"
+      echo ">> Compiling index.html to file://$(pwd)/dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe/index.html"
       ${miso-pkgs.pkgs.ag}/bin/ag -l | ${miso-pkgs.pkgs.entr}/bin/entr sh -c '${miso-pkgs.pkgs.haskell.packages.ghc865.cabal-install}/bin/cabal --project-file=ghcjs.project new-build --ghcjs'
     }
 
@@ -20,14 +20,14 @@ release.env.overrideAttrs (old: {
     }
 
     function optimize () {
-      echo "Running clouse-compiler on ./result/bin/app-exe.jsexe/all.js"
+      echo "Running clouse-compiler on ./dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe/all.js"
       mkdir -p dist
       cp ./index.html dist/index.html
       ${miso-pkgs.pkgs.closurecompiler}/bin/closure-compiler \
         --compilation_level ADVANCED_OPTIMIZATIONS \
         --jscomp_off=checkVars \
-        --externs=./result/bin/app-exe.jsexe/all.js.externs \
-        ./result/bin/app-exe.jsexe/all.js > ./dist/all.js
+        --externs=./dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe/all.js.externs \
+        ./dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe/all.js > ./dist/all.js
     }
   '';
 })
