@@ -16,8 +16,8 @@ import Types
 viewApp :: App -> Miso.View Msg
 viewApp appModel =
   case appModel of
-    Initializing initModel -> div_ [] [text "Initializing..."]
-    FailedToInitialize initModel err -> div_ [] [text . ms $ "Failed to initialize: " <> err]
+    Initializing _initModel -> div_ [] [text "Initializing..."]
+    FailedToInitialize _initModel err -> div_ [] [text . ms $ "Failed to initialize: " <> err]
     Ready model -> div_ [] [routeToPage model]
 
 routeToPage :: Model -> Miso.View Msg

@@ -22,7 +22,6 @@
     "**/dist-newstyle": true
   },
   "nixEnvSelector.nixShellConfig": "${workspaceRoot}/shell.nix",
-  "[haskell]": {
-    "editor.defaultFormatter": "sjurmillidahl.ormolu-vscode"
-  }
+  "hic.executablePath": "ghcide",
+  "hic.arguments": "--lsp"
 }

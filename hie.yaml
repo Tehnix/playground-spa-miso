@@ -9,3 +9,8 @@ cradle:
 #     config: { cradle: { cabal: { component: "exe:app-exe" } } }
 #   - path: "./test"
 #     config: { cradle: { cabal: { component: "test:app-test" } } }
+
+dependencies:
+  - package.yaml
+  - shell.nix
+  - default.nix
