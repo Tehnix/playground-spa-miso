@@ -6,13 +6,14 @@ dev.env.overrideAttrs (old: {
     export NIX_GHC_DOCDIR="$NIX_GHC/../../share/doc/ghc/html"
     export NIX_GHC_LIBDIR="$(ghc --print-libdir)"
 
-    export PATH="${pkgs.stylish-haskell}/bin:$PATH"
-    export PATH="${pkgs.hlint}/bin:$PATH"
+    export PATH="${bootPkgs.stylish-haskell}/bin:$PATH"
+    export PATH="${bootPkgs.hlint}/bin:$PATH"
     export PATH="${ghcide-pkgs.ghcide-ghc865}/bin:$PATH"
     export PATH="${miso-pkgs.pkgs.haskell.packages.ghc865.hpack}/bin:$PATH"
-    export PATH="${pkgs.doctest}/bin:$PATH"
-    export PATH="${pkgs.cabal-install}/bin:$PATH"
-    export PATH="${pkgs.ghcid}/bin:$PATH"
+    export PATH="${bootPkgs.doctest}/bin:$PATH"
+    export PATH="${bootPkgs.cabal-install}/bin:$PATH"
+    export PATH="${bootPkgs.ghcid}/bin:$PATH"
+    export PATH="${miso-pkgs.pkgs.haskell.packages.ghc865.record-dot-preprocessor}/bin:$PATH"
 
     # Make sure our generated .cabal file and configuration is always up-to-date.
     hpack

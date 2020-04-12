@@ -23,12 +23,13 @@ ghc-options:
   - -Wpartial-fields
   - -fhide-source-paths
   - -Wno-type-defaults
+  # We the preprocessor instead of `-fplugin=RecordDotPreprocessor` to get ghcide support
+  # (see https://github.com/digital-asset/ghcide/issues/279).
+  - -F -pgmF=record-dot-preprocessor
 
 default-extensions:
-  # - NoImplicitPrelude
   # Working with records.
   - DuplicateRecordFields
-  - OverloadedLabels
   # Working with Generics.
   - DeriveFoldable
   - DeriveFunctor
@@ -76,6 +77,8 @@ dependencies:
   - servant
   - network-uri
   # Working with records.
+  # - record-dot-preprocessor # Needs GHC package, which is not available for GHCJS.
+  - record-hasfield
   - lens
   - generic-lens
   # Other dependencies.

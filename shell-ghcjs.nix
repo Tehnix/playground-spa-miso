@@ -2,10 +2,11 @@ with (import ./default.nix);
 release.env.overrideAttrs (old: {
   shellHook = ''
     export PATH="${miso-pkgs.pkgs.haskell.packages.ghcjs86.hpack}/bin:$PATH"
-    export PATH="${pkgs.cabal-install}/bin:$PATH"
+    export PATH="${bootPkgs.cabal-install}/bin:$PATH"
     export PATH="${miso-pkgs.pkgs.closurecompiler}/bin:$PATH"
     export PATH="${miso-pkgs.pkgs.entr}/bin:$PATH"
     export PATH="${miso-pkgs.pkgs.ag}/bin:$PATH"
+    export PATH="${miso-pkgs.pkgs.haskell.packages.ghc865.record-dot-preprocessor}/bin:$PATH"
 
     # Make sure our generated .cabal file and configuration is always up-to-date.
     hpack

@@ -1,6 +1,5 @@
 module Types where
 
-import Data.Generics.Labels ()
 import Network.URI (URI)
 
 -- | Type synonym for an application model
@@ -17,14 +16,14 @@ data InitModel
       { config     :: MisoString,
         currentURI :: URI
       }
-  deriving (Show, Eq, Generic)
+  deriving (Show, Eq)
 
 data Model
   = App
       { counter    :: Int,
         currentURI :: URI
       }
-  deriving (Show, Eq, Generic)
+  deriving (Show, Eq)
 
 type RepoId = String
 

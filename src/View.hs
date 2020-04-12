@@ -1,6 +1,5 @@
 module View where
 
-import Control.Lens ((^.))
 import Data.Proxy (Proxy(..))
 import qualified Miso
 import Miso.Html
@@ -20,7 +19,7 @@ viewApp appModel =
 routeToPage :: Model -> Miso.View Msg
 routeToPage model = either (const notFoundPage) id page
   where
-    page = Miso.runRoute (Proxy @Route) handlers (^. #currentURI) model
+    page = Miso.runRoute (Proxy @Route) handlers (.currentURI) model
     handlers = topPage :<|> listPage :<|> editPage
 
 topPage :: Model -> View Msg
@@ -38,7 +37,7 @@ editPage _query model =
   div_
     []
     [ button_ [onClick AddOne] [text "+"],
-      text . ms $ model ^. #counter,
+      text . ms $ model.counter,
       button_ [onClick SubtractOne] [text "-"]
     ]
 

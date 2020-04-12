@@ -1,4 +1,4 @@
-name: cd
+name: ci
 
 # Check out https://help.github.com/en/articles/workflow-syntax-for-github-actions for documentation on Actions.
 on: [push]
@@ -20,7 +20,7 @@ jobs:
           name: miso-haskell # Add Miso's cachix
 
       - name: Build GHCJS Version
-        run: nix-build -A release # or: nix-shell shell-ghcjs.nix --run build
+        run: nix-shell shell-ghcjs.nix --run build # or: nix-build -A release
 
       - name: Optimize Build
         run: nix-shell shell-ghcjs.nix --run optimize
