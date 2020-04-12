@@ -15,6 +15,14 @@ The goal is to somewhat replicate the setup achieved in [the Elm SPA playground]
 
 ## Developing
 
+Clone down the repo and its submodules,
+
+```bash
+$ git clone git@github.com:Tehnix/playground-spa-miso.git
+$ git submodule init
+$ git submodule update
+```
+
 We'll use Nix to manage our tools and build our project. Nix is the best option when GHCJS is involved, so we'll set up our toolchain around working with that.
 
 If you haven't set up Nix then [follow these steps if you are on macOS](https://gist.github.com/Tehnix/38efa7ff1215ae49bf17925ce1684266#setting-up-nix), or simply run `sh <(curl https://nixos.org/nix/install) --daemon` on Linux.

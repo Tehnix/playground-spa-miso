@@ -1,13 +1,14 @@
 let
-  pkgs = import <miso-pkgs-base> { };
+  pkgs = import <nixpkgs> { };
   ghcide-pkgs = import (builtins.fetchTarball
     "https://github.com/hercules-ci/ghcide-nix/tarball/master") { };
 
+  # FIXME: This overlay currently doesn't kick-in, so `base-noprelude` is broken for GHCJS until it is fixed.
   base-noprelude-src = pkgs.fetchFromGitHub {
-    owner = "kowainik";
+    owner = "codetalkio";
     repo = "base-noprelude";
-    rev = "e5cb48f7f344de339b9ce5e4473dfbd532ba52bc";
-    sha256 = "02rl1isbzd9r1hmg7js1fm9l9qg8j0c27rhjbwli6fqnq221fbrf";
+    rev = "00b9f86b788d5e3558846b292a6bf6b25816647b";
+    sha256 = "0ziqdg5n4fg83wykbbdhbmki5mksyzaxvw3bma2qain9hz5bran6";
   } { };
   overlay = pkgs: super:
     with pkgs.haskell.lib; {
@@ -17,25 +18,28 @@ let
             overrides = selfPkgs: superPkgs:
               with pkgs.haskell.lib; rec {
                 base-noprelude =
-                  selfPkgs.callCabal2nix "base-noprelude" base-noprelude-src;
+                  selfPkgs.callCabal2nix "base-noprelude" base-noprelude-src
+                  { };
               };
           };
           ghc865 = pkgs.haskell.packages.ghc865.override {
             overrides = selfPkgs: superPkgs:
               with pkgs.haskell.lib; rec {
                 base-noprelude =
-                  selfPkgs.callCabal2nix "base-noprelude" base-noprelude-src;
+                  selfPkgs.callCabal2nix "base-noprelude" base-noprelude-src
+                  { };
               };
           };
         };
       };
     };
   miso-pkgs = import (builtins.fetchTarball
-    "https://github.com/dmjio/miso/archive/9701b0931dd3d1d7f940e94f30932d413ee8e572.tar.gz") {
+    "https://github.com/dmjio/miso/archive/351738c1e14d11dc3afd00a21ae248acb58c5917.tar.gz") {
       overlays = [ overlay ];
     };
 in {
   # Inherit allows us to use the `miso-pkgs` and `ghcide-pkgs` variable from another lexical scope.
+  inherit pkgs;
   inherit miso-pkgs;
   inherit ghcide-pkgs;
 

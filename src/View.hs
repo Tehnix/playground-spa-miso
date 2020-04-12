@@ -1,5 +1,7 @@
 module View where
 
+import Control.Lens ((^.))
+import Custom.Prelude
 import Data.Proxy (Proxy(..))
 import qualified Miso
 import Miso.Html
@@ -12,14 +14,14 @@ import Types
 viewApp :: App -> Miso.View Msg
 viewApp appModel =
   case appModel of
-    Initializing _initModel -> div_ [] [text "Initializing..."]
+    Initializing _initModel -> div_ [] [text "Initializing.."]
     FailedToInitialize _initModel err -> div_ [] [text ("Failed to initialize: " <> err)]
     Ready model -> div_ [] [routeToPage model]
 
 routeToPage :: Model -> Miso.View Msg
 routeToPage model = either (const notFoundPage) id page
   where
-    page = Miso.runRoute (Proxy @Route) handlers (\m -> m.currentURI) model
+    page = Miso.runRoute (Proxy @Route) handlers (^. #currentURI) model
     handlers = topPage :<|> listPage :<|> editPage
 
 topPage :: Model -> View Msg
@@ -37,7 +39,7 @@ editPage _query model =
   div_
     []
     [ button_ [onClick AddOne] [text "+"],
-      text . ms $ model.counter,
+      text . ms $ model ^. #counter,
       button_ [onClick SubtractOne] [text "-"]
     ]
 

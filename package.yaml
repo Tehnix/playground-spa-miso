@@ -23,11 +23,9 @@ ghc-options:
   - -Wpartial-fields
   - -fhide-source-paths
   - -Wno-type-defaults
-  # We use this instead of `-fplugin=RecordDotPreprocessor` to get ghcide support
-  # (see https://github.com/digital-asset/ghcide/issues/279).
-  - -F -pgmF=record-dot-preprocessor
 
 default-extensions:
+  - NoImplicitPrelude
   # Working with records.
   - DuplicateRecordFields
   - OverloadedLabels
@@ -71,15 +69,13 @@ default-extensions:
 
 dependencies:
   # Set up Relude.
-  - base-noprelude
+  - base # base-noprelude
   - relude
   # Miso and related libraries (e.g. routing).
   - miso >= 1.5.0.0
   - servant
   - network-uri
   # Working with records.
-  - record-dot-preprocessor
-  - record-hasfield
   - lens
   - generic-lens
   # Other dependencies.

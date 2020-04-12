@@ -20,7 +20,7 @@ jobs:
           name: miso-haskell # Add Miso's cachix
 
       - name: Build GHCJS Version
-        run: nix-shell shell-ghcjs.nix --run build
+        run: nix-build -A release # or: nix-shell shell-ghcjs.nix --run build
 
       - name: Optimize Build
         run: nix-shell shell-ghcjs.nix --run optimize
@@ -41,10 +41,10 @@ jobs:
           name: miso-haskell # Add Miso's cachix
 
       - name: Build GHC Version
-        run: nix-shell --run build
+        run: nix-shell --run 'cabal v2-build'
 
       - name: Test Documentation
-        run: nix-shell --run doctest
+        run: nix-shell --run 'cabal v2-test test:doctests'
 
       - name: Test Application
-        run: nix-shell --run test
+        run: nix-shell --run 'cabal v2-test test:app-test'

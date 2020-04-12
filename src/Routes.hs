@@ -1,5 +1,6 @@
 module Routes where
 
+import Custom.Prelude
 import Data.Proxy (Proxy(..))
 import qualified Miso
 import Servant.API ((:<|>), (:>), Capture)

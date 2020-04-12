@@ -4,10 +4,11 @@
   "description": "Playing around with Miso SPAs and structuring them for larger scale applications. The purpose is to avoid servers, so we are explicitly not aiming at an isomorphic setup, but purely SPA.",
   "main": "index.js",
   "scripts": {
-    "serve:release": "http-serve dist -c-1",
-    "serve:dev": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe -c-1",
+    "dev:serve-release": "http-serve dist -c-1",
+    "dev:serve-normal": "http-serve dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe -c-1",
+    "dev:serve": "hrs --port 8080 dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe",
     "dev:ghcjs": "nix-shell shell-ghcjs.nix --run refresh",
-    "dev:refresh-ghcjs": "npm-run-all --silent --print-label --parallel serve:dev dev:ghcjs",
+    "dev:refresh-ghcjs": "npm-run-all --silent --print-label --parallel dev:serve dev:ghcjs",
     "dev:reload": "nix-shell --run reload",
     "dev": "npm --silent run dev:refresh-ghcjs",
     "ghcid": "nix-shell --run run-ghcid",
@@ -28,6 +29,7 @@
   "homepage": "https://github.com/Tehnix/playground-spa-miso#readme",
   "devDependencies": {
     "http-serve": "1.0.1",
-    "npm-run-all": "4.1.5"
+    "npm-run-all": "4.1.5",
+    "simple-hot-reload-server": "codetalkio/simple-hot-reload-server"
   }
 }

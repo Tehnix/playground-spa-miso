@@ -1,6 +1,6 @@
-{-# LANGUAGE OverlappingInstances #-}
 module Types where
 
+import Custom.Prelude
 import Data.Generics.Labels ()
 import Network.URI (URI)
 
