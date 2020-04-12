@@ -1,4 +1,4 @@
-module Zrelude
+module Prelude
   ( module Relude
   , fms
   , MisoString

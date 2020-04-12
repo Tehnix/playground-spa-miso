@@ -8,7 +8,6 @@ import Routes (Route)
 import qualified Routes
 import Servant.API ((:<|>)(..))
 import Types
-import Zrelude
 
 viewApp :: App -> Miso.View Msg
 viewApp appModel =
