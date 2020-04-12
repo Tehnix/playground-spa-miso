@@ -1,7 +1,6 @@
 module View where
 
 import Control.Lens ((^.))
-import Custom.Prelude
 import Data.Proxy (Proxy(..))
 import qualified Miso
 import Miso.Html

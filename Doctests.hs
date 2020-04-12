@@ -1,4 +1,4 @@
 import Test.DocTest
 
 main :: IO ()
-main = doctest ["-isrc", "src/App.hs"]
+main = doctest ["-XDuplicateRecordFields", "-XOverloadedLabels", "-XDeriveFoldable", "-XDeriveFunctor", "-XDeriveGeneric", "-XDeriveLift", "-XDeriveTraversable", "-XNoMonomorphismRestriction", "-XApplicativeDo", "-XBangPatterns", "-XConstraintKinds", "-XDataKinds", "-XDefaultSignatures", "-XEmptyCase", "-XEmptyDataDecls", "-XExistentialQuantification", "-XFlexibleContexts", "-XFlexibleInstances", "-XFunctionalDependencies", "-XGADTs", "-XGeneralizedNewtypeDeriving", "-XInstanceSigs", "-XKindSignatures", "-XLambdaCase", "-XMultiParamTypeClasses", "-XMultiWayIf", "-XNamedFieldPuns", "-XOverloadedStrings", "-XPatternSynonyms", "-XRankNTypes", "-XScopedTypeVariables", "-XStandaloneDeriving", "-XTupleSections", "-XTypeApplications", "-XTypeFamilies", "-XTypeFamilyDependencies", "-XTypeOperators", "-isrc", "src/App.hs"]

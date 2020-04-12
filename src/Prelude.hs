@@ -1,4 +1,4 @@
-module Custom.Prelude
+module Prelude
   ( module Relude
   , MisoString
   )

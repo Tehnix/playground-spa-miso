@@ -3,7 +3,6 @@
 module Update where
 
 import Control.Lens ((+=), (-=), (.=))
-import Custom.Prelude
 import qualified Miso
 import Types
 

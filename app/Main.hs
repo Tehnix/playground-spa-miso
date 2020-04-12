@@ -1,7 +1,6 @@
 {-# LANGUAGE CPP #-}
 module Main where
 
-import Custom.Prelude
 #ifndef __GHCJS__
 import Language.Javascript.JSaddle.Warp as JSaddle
 import Miso (JSM)

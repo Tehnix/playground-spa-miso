@@ -1,6 +1,5 @@
 module App (app) where
 
-import Custom.Prelude
 import Miso (App(..))
 import qualified Miso
 import Network.URI (URI)

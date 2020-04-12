@@ -9,7 +9,7 @@ let
     repo = "base-noprelude";
     rev = "00b9f86b788d5e3558846b292a6bf6b25816647b";
     sha256 = "0ziqdg5n4fg83wykbbdhbmki5mksyzaxvw3bma2qain9hz5bran6";
-  } { };
+  };
   overlay = pkgs: super:
     with pkgs.haskell.lib; {
       haskell = pkgs.haskell // {
