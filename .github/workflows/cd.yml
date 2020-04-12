@@ -41,7 +41,7 @@ jobs:
           name: miso-haskell # Add Miso's cachix
 
       - name: Build GHC Version
-        run: nix-shell --run 'cabal v2-build'
+        run: nix-shell --run 'cabal v2-build --enable-tests'
 
       - name: Test Documentation
         run: nix-shell --run 'cabal v2-test test:doctests'
