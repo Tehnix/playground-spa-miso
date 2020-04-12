@@ -3,6 +3,7 @@ module Types where
 
 import Data.Generics.Labels ()
 import Network.URI (URI)
+import Zrelude
 
 -- | Type synonym for an application model
 data App

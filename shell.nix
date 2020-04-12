@@ -30,5 +30,17 @@ dev.env.overrideAttrs (old: {
     function run-ghcid () {
       ghcid -c 'cabal new-repl --ghc'
     }
+
+    function build () {
+      cabal new-build
+    }
+
+    function doctest () {
+      cabal new-test test:doctests
+    }
+
+    function test () {
+      cabal new-test test:app-test
+    }
   '';
 })

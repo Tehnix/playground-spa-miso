@@ -6,6 +6,7 @@ import Network.URI (URI)
 import Types
 import qualified Update
 import qualified View
+import Zrelude
 
 
 app :: Miso.JSM ()

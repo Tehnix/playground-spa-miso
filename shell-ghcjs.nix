@@ -2,7 +2,6 @@ with (import ./default.nix);
 release.env.overrideAttrs (old: {
   shellHook = ''
     alias hpack=${miso-pkgs.pkgs.haskell.packages.ghc865.hpack}/bin/hpack
-
     alias closure-compiler=${miso-pkgs.pkgs.closurecompiler}/bin/closure-compiler
     alias entr=${miso-pkgs.pkgs.entr}/bin/entr
     alias ag=${miso-pkgs.pkgs.ag}/bin/ag

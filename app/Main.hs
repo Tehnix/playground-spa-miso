@@ -7,6 +7,7 @@ import Miso (JSM)
 import qualified Miso
 import qualified Network.Wai.Handler.Warp as Warp
 import qualified Network.WebSockets as WebSockets
+import Zrelude
 #endif
 
 import qualified App

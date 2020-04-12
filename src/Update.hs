@@ -5,6 +5,7 @@ module Update where
 import Control.Lens ((+=), (-=), (.=))
 import qualified Miso
 import Types
+import Zrelude
 
 -- | Updates model, optionally introduces side effects.
 --

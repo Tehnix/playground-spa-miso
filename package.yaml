@@ -28,6 +28,7 @@ ghc-options:
   - -F -pgmF=record-dot-preprocessor
 
 default-extensions:
+  - NoImplicitPrelude
   # Working with records.
   - DuplicateRecordFields
   - OverloadedLabels
@@ -71,7 +72,7 @@ default-extensions:
 
 dependencies:
   # Set up Relude.
-  - base-noprelude
+  - base
   - relude
   # Miso and related libraries (e.g. routing).
   - miso >= 1.5.0.0
