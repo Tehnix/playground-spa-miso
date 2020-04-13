@@ -6,6 +6,7 @@ author: "Tehnix"
 maintainer: "ckl@codetalk.io"
 copyright: "2020 Tehnix"
 description: "Please see the README on GitHub at <https://github.com/githubuser/app#readme>"
+build-type: Custom
 extra-source-files:
   - README.md
   - Changelog.md
@@ -85,6 +86,12 @@ dependencies:
   - bytestring
   - aeson
 
+custom-setup:
+  dependencies:
+    - base
+    - Cabal
+    - cabal-doctest >= 1.0.8 && <1.1
+
 library:
   source-dirs: src
 
@@ -108,16 +115,18 @@ executables:
             - servant
 
 tests:
-  app-test:
-    main: Spec.hs
+  app-test: # This name is kept in sync with Setup.hs
+    main: Main.hs
     source-dirs: test
     dependencies:
       - miso-spa
-
-  doctests:
-    main: Doctests.hs
-    ghc-options:
-      - -threaded
-    dependencies:
-      - miso-spa
+      - hspec
+      - hspec-discover
       - doctest >= 0.16.3
+  # doctests:
+  #   main: doctests.hs
+  #   ghc-options:
+  #     - -threaded
+  #   dependencies:
+  #     - miso-spa
+  #     - doctest >= 0.16.3

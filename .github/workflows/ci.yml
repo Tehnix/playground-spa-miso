@@ -5,7 +5,7 @@ on: [push]
 
 jobs:
   # Run our release build with optimizations.
-  ghcjs-build:
+  ghcjs:
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v1
@@ -19,8 +19,11 @@ jobs:
           skipNixBuild: true
           name: miso-haskell # Add Miso's cachix
 
-      - name: Update hackage packages
-        run: nix-shell shell-ghcjs.nix --run 'cabal update'
+      - name: Bootstrap nix environment
+        run: nix-shell shell-ghcjs.nix --max-jobs auto --run 'echo "Ready"'
+
+      - name: Update hackage packages # If things don't work, change to cabal v2-update 'hackage.haskell.org,2020-04-10T21:50:21Z'
+        run: nix-shell shell-ghcjs.nix --run 'cabal --project-file=ghcjs.project v2-update'
 
       - name: Build GHCJS Version
         run: nix-shell shell-ghcjs.nix --run build # or: nix-build -A release
@@ -29,7 +32,7 @@ jobs:
         run: nix-shell shell-ghcjs.nix --run optimize
 
   # Run our development build along with doc and unit tests.
-  ghc-build:
+  ghc:
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v1
@@ -43,14 +46,14 @@ jobs:
           skipNixBuild: true
           name: miso-haskell # Add Miso's cachix
 
-      - name: Update hackage packages
-        run: nix-shell --run 'cabal update'
+      - name: Bootstrap nix environment
+        run: nix-shell --max-jobs auto --run 'echo "Ready"'
+
+      - name: Update hackage packages # If things don't work, change to cabal v2-update 'hackage.haskell.org,2020-04-10T21:50:21Z'
+        run: nix-shell --run 'cabal v2-update'
 
       - name: Build GHC Version
         run: nix-shell --run 'cabal v2-build --enable-tests'
-
-      - name: Test Documentation
-        run: nix-shell --run 'cabal v2-test test:doctests'
 
       - name: Test Application
         run: nix-shell --run 'cabal v2-test test:app-test'

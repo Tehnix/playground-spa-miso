@@ -1,3 +1,7 @@
+:load ./src/Prelude
+import Prelude
+:set -XImplicitPrelude
+
 :set -fwarn-unused-binds -fwarn-unused-imports
 :set -isrc
 
@@ -12,5 +16,3 @@
 :set -XNoMonomorphismRestriction
 :set -XTypeApplications
 :set -XTypeSynonymInstances
-
-:load Main

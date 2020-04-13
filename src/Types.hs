@@ -2,6 +2,7 @@ module Types where
 
 import Network.URI (URI)
 
+
 -- | Type synonym for an application model
 data App
   = Initializing InitModel
