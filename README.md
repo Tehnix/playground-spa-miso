@@ -1,4 +1,4 @@
-# SPA Playground: Miso
+# SPA Playground: Miso ![ci](https://github.com/Tehnix/playground-spa-miso/workflows/ci/badge.svg)
 Playing around with Miso SPAs and structuring them for larger scale applications. The purpose is to avoid servers, so we are explicitly not aiming at an isomorphic setup, but purely SPA.
 
 **To Do:**
