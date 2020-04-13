@@ -8,7 +8,7 @@ release.env.overrideAttrs (old: {
     export PATH="${miso-pkgs.pkgs.ag}/bin:$PATH"
     export PATH="${miso-pkgs.pkgs.haskell.packages.ghc865.record-dot-preprocessor}/bin:$PATH"
 
-    export PATH_TO_CABAL_OUTPUT=dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/x/app-exe/build/app-exe/app-exe.jsexe
+    export PATH_TO_CABAL_OUTPUT=dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/miso-spa-0.1.0.0/build/app-exe/app-exe.jsexe
     export PATH_TO_NIX_OUTPUT=result/bin/app-exe.jsexe
 
     # Make sure our generated .cabal file and configuration is always up-to-date.
