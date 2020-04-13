@@ -19,6 +19,9 @@ jobs:
           skipNixBuild: true
           name: miso-haskell # Add Miso's cachix
 
+      - name: Update hackage packages
+        run: nix-shell shell-ghcjs.nix --run 'cabal update'
+
       - name: Build GHCJS Version
         run: nix-shell shell-ghcjs.nix --run build # or: nix-build -A release
 
@@ -39,6 +42,9 @@ jobs:
         with:
           skipNixBuild: true
           name: miso-haskell # Add Miso's cachix
+
+      - name: Update hackage packages
+        run: nix-shell --run 'cabal update'
 
       - name: Build GHC Version
         run: nix-shell --run 'cabal v2-build --enable-tests'
