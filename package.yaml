@@ -68,6 +68,8 @@ default-extensions:
   - TypeFamilies
   - TypeFamilyDependencies
   - TypeOperators
+  - ViewPatterns
+  - RecordWildCards
 
 dependencies:
   # Set up Relude.

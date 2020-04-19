@@ -4,7 +4,7 @@ cabal-version: 1.24
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1660c63f609e146467d87148ca8514b497c947a7d49cba0c154a969fc07618ef
+-- hash: 5467ae441aa9230f1dddbca38ca38109f5a510db1f1f5dc11cf0c4f7fc2fb284
 
 name:           miso-spa
 version:        0.1.0.0
@@ -43,7 +43,7 @@ library
       Paths_miso_spa
   hs-source-dirs:
       src
-  default-extensions: DuplicateRecordFields DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators ViewPatterns RecordWildCards
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults -F -pgmF=record-dot-preprocessor
   build-depends:
       aeson
@@ -64,7 +64,7 @@ executable app-exe
       Paths_miso_spa
   hs-source-dirs:
       app
-  default-extensions: DuplicateRecordFields DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators ViewPatterns RecordWildCards
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults -F -pgmF=record-dot-preprocessor
   build-depends:
       aeson
@@ -99,7 +99,7 @@ test-suite app-test
       Paths_miso_spa
   hs-source-dirs:
       test
-  default-extensions: DuplicateRecordFields DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators
+  default-extensions: DuplicateRecordFields DeriveFoldable DeriveFunctor DeriveGeneric DeriveLift DeriveTraversable NoMonomorphismRestriction ApplicativeDo BangPatterns ConstraintKinds DataKinds DefaultSignatures EmptyCase EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PatternSynonyms RankNTypes ScopedTypeVariables StandaloneDeriving TupleSections TypeApplications TypeFamilies TypeFamilyDependencies TypeOperators ViewPatterns RecordWildCards
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wcompat -Wredundant-constraints -Wincomplete-record-updates -Wincomplete-uni-patterns -Wincomplete-patterns -Wpartial-fields -fhide-source-paths -Wno-type-defaults -F -pgmF=record-dot-preprocessor
   build-depends:
       aeson
